@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <script>
+    /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
+
+  <script type="text/javascript">
+    window.onload = function() {
+      var chart = new CanvasJS.Chart("chartContainer", {
+        title: {
+          text: "Pie chart"
+        },
+        legend: {
+          maxWidth: 350,
+          itemWidth: 120
+        },
+        data: [{
+          type: "pie",
+          showInLegend: true,
+          legendText: "{indexLabel}",
+          dataPoints: [{
+              y: 4,
+              indexLabel: "Success Count"
+            },
+            {
+              y: 8,
+              indexLabel: "Failure Count"
+            }
+          ]
+        }]
+      });
+      chart.render();
+    }
+  </script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+</head>
+
+<body>
+  <div class="tab">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Sr No</th>
+          <th scope="col">Applications</th>
+          <th scope="col">Success Count</th>
+          <th scope="col">Failure Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Smoke</td>
+          <td>4</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>UI</td>
+          <td>9</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>QE</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Success Count</th>
+          <th scope="col">Failure Count</th>
+          <th scope="col">Graph</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>20</td>
+        <td>45</td>
+        <td>
+          <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn btn btn-outline-dark">Click here</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#">
+                <div id="chartContainer" style="height: 500px; width: 500px;"></div>
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
